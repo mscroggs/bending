@@ -71,7 +71,7 @@ def save_frames(
 def animate_cylinder(
     filename: str,
     direction: str = "vertical",
-    nframes: int = 30,
+    nframes: int = 15,
     width: typing.Optional[int] = None,
     height: typing.Optional[int] = None,
     folder: typing.Optional[str] = None,
@@ -119,6 +119,7 @@ def animate_cylinder(
 def make_gif(
     folder: str,
     gif_filename: typing.Optional[str] = None
+    loop: int = 0
 ):
     if gif_filename is None:
         gif_filename = f"{folder}.gif"
@@ -128,4 +129,4 @@ def make_gif(
         images.append(imageio.imread(f"{folder}/{frame}.png"))
         frame += 1
     print(folder, frame)
-    imageio.mimsave(gif_filename, images, loop=0)
+    imageio.mimsave(gif_filename, images, loop=loop)
