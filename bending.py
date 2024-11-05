@@ -175,5 +175,4 @@ def make_gif(
     while os.path.isfile(f"{folder}/{frame}.png"):
         images.append(imageio.imread(f"{folder}/{frame}.png"))
         frame += 1
-    print(folder, frame)
     imageio.mimsave(gif_filename, images, loop=loop)
