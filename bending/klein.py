@@ -60,7 +60,8 @@ def animate_klein_bottle(
                 )
                 y_dir = (math.cos(angle), math.sin(angle))
                 if angle > math.pi:
-                    small_r = small_r_bounds[1] + (angle - math.pi) / (0.5 * math.pi) * (small_r_bounds[0] - small_r_bounds[1])
+                    small_r = small_r_bounds[1] + (angle - math.pi) / (0.5 * math.pi) * (
+                        small_r_bounds[0] - small_r_bounds[1])
             elif scaled_y < 2 + 2 * math.pi:
                 angle = scaled_y - 2 - 3 * math.pi / 2
                 centre = (
