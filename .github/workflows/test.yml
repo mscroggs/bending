@@ -1,4 +1,4 @@
-name: 🕶️
+name: 🧪
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  style-checks:
-    name: Run style checks
+  test:
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
@@ -20,7 +20,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 -m pip install -r requirements.txt
         name: Install requirements
-      - run: |
-          python3 -m pip install flake8
-          python3 -m flake8 .
-        name: Run flake8 checks
+      - run: python3 -m make_examples.py
+        name: Make examples
