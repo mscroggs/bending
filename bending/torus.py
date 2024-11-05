@@ -2,7 +2,7 @@ import math
 import typing
 from PIL import Image
 from bending.core import make_frame
-from bending.io import save_frames
+from bending.saveload import save_frames
 
 
 def animate_torus(
@@ -41,7 +41,6 @@ def animate_torus(
     for t in range(1, nframes + 1):
         print(f"Making {folder} frame {nframes + t}")
         radius = height / 2 / math.pi * nframes / t
-        origin = width / 2 / math.pi - radius
         origin = -radius
         frames.append(make_frame(small, lambda x, y: (
             width / 2 / math.pi * math.sin(x * 2 * math.pi / width),

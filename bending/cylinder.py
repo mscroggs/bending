@@ -2,7 +2,7 @@ import math
 import typing
 from PIL import Image
 from bending.core import make_frame
-from bending.io import save_frames
+from bending.saveload import save_frames
 
 
 def animate_cylinder(

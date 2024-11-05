@@ -46,7 +46,7 @@ def make_gif(
     folder: str,
     gif_filename: typing.Optional[str] = None,
     loop: int = 0,
-    final_repeat: int = 50,
+    boomerang: bool = True,
 ):
     if gif_filename is None:
         gif_filename = f"{folder}.gif"
@@ -55,4 +55,7 @@ def make_gif(
     while os.path.isfile(f"{folder}/{frame}.png"):
         images.append(imageio.imread(f"{folder}/{frame}.png"))
         frame += 1
+
+    images += images[::-1]
+
     imageio.mimsave(gif_filename, images, loop=loop)
