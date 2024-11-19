@@ -88,7 +88,9 @@ def animate_klein_bottle(
                 else:
                     centre = (0, y2 - 2 * height * scale / (4 + 2 * math.pi))
                 y_dir = (-1, 0)
-                small_r = small_r_bounds[0] + math.sin(math.pi * scaled_y2 / 4)**2 * (small_r_bounds[1] - small_r_bounds[0])
+                small_r = small_r_bounds[0] + math.sin(
+                    math.pi * scaled_y2 / 4
+                ) ** 2 * (small_r_bounds[1] - small_r_bounds[0])
 
             y_offset = -small_r * math.cos(x * 2 * math.pi / width)
             return (
