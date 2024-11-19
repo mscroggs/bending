@@ -34,6 +34,7 @@ def animate_klein_bottle(
     frames = [make_frame(small, lambda x, y: (x, 0, y), lighten=lighten)]
 
     for t in range(1, nframes + 1):
+        continue
         print(f"Making {folder} frame {t}")
         radius = width / 2 / math.pi * nframes / t
         frames.append(
@@ -89,7 +90,6 @@ def animate_klein_bottle(
                     centre = (0, y2 - 2 * height * scale / (4 + 2 * math.pi))
                 y_dir = (1, 0)
                 small_r = small_r_bounds[0] + scaled_y2 / 2 * (small_r_bounds[1] - small_r_bounds[0])
-                small_r = width / 4 / math.pi + scaled_y2 / 2 * width / 4 / math.pi
 
             y_offset = -small_r * math.cos(x * 2 * math.pi / width)
             return (
