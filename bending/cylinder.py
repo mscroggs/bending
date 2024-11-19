@@ -1,7 +1,7 @@
 import math
 import typing
 from PIL import Image
-from bending.core import make_frame
+from bending.images import make_frame
 from bending.file_io import save_frames
 
 
@@ -30,9 +30,9 @@ def animate_cylinder(
         height = math.floor(img.size[1] * width / img.size[0])
 
     small = img.resize((width, height), resample=Image.BILINEAR)
-    small.save("test.png")
+    img_data = sample_image(small)
 
-    frames = [make_frame(small, lambda x, y: (x, 0, y), lighten=lighten)]
+    frames = [make_frame(img_data, lambda x, y: (x, 0, y), lighten=lighten)]
 
     for t in range(1, nframes + 1):
         print(f"Making {folder} frame {t}")
@@ -40,7 +40,7 @@ def animate_cylinder(
             radius = height / 2 / math.pi * nframes / t
             frames.append(
                 make_frame(
-                    small,
+                    img_data,
                     lambda x, y: (
                         x,
                         radius * (1 - math.cos(y / radius)),
@@ -53,7 +53,7 @@ def animate_cylinder(
             radius = width / 2 / math.pi * nframes / t
             frames.append(
                 make_frame(
-                    small,
+                    img_data,
                     lambda x, y: (
                         radius * math.sin(x / radius),
                         radius * (1 - math.cos(x / radius)),
