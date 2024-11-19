@@ -6,7 +6,7 @@ import os
 
 
 def save_frames(
-    frames: typing.List[typing.Tuple[typing.Tuple[float, ...], typing.Tuple[int, int, int, int]]],
+    frames: typing.List[typing.List[typing.Tuple[typing.Tuple[float, ...], typing.Tuple[int, int, int, int]]]],
     folder: str,
     bg: str = "#FFFFFF",
     output_width: typing.Optional[int] = None,
@@ -22,7 +22,7 @@ def save_frames(
     ymin = math.floor(min(min(min(pts[1::2]) for pts, _ in polygons) for polygons in frames))
     ymax = math.ceil(max(max(max(pts[1::2]) for pts, _ in polygons) for polygons in frames))
 
-    scale = 1
+    scale = 1.0
     if output_width is not None:
         scale = min(scale, output_width / (xmax - xmin))
     if output_height is not None:
@@ -34,10 +34,10 @@ def save_frames(
         draw = ImageDraw.Draw(frame)
 
         for pts, color in polygons:
-            draw.polygon(tuple(
-                scale * (j - (xmin if i % 2 == 0 else ymin))
-                for i, j in enumerate(pts)
-            ), color)
+            draw.polygon(
+                tuple(scale * (j - (xmin if i % 2 == 0 else ymin)) for i, j in enumerate(pts)),
+                color,
+            )
 
         frame.save(f"{folder}/{frame_n}.png")
 
