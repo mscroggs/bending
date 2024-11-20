@@ -10,5 +10,8 @@ like these:
 ## A torus
 ![An example animation](examples/torus.gif)
 
+## A M&ouml;bius strip
+![An example animation](examples/mobius.gif)
+
 ## A Klein bottle
 ![An example animation](examples/klein-bottle.gif)
