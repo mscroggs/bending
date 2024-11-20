@@ -31,7 +31,7 @@ def animate_mobius(
     small = img.resize((width, height), resample=Image.BILINEAR)
     img_data = sample_image(small)
 
-    frames = [make_frame(img_data, lambda x, y: (x, 0, y), lighten=lighten)]
+    frames = [make_frame(img_data, lambda x, y: (x, 0, y), lighten=lighten, lighten_adjust=20)]
 
     for t in range(1, nframes + 1):
         print(f"Making {folder} frame {t}")
@@ -62,7 +62,7 @@ def animate_mobius(
                 )
 
         frames.append(
-            make_frame(img_data, mobius_f, lighten=lighten)
+            make_frame(img_data, mobius_f, lighten=lighten, lighten_adjust=20)
         )
 
     save_frames(frames, folder, output_width=output_width, output_height=output_height)

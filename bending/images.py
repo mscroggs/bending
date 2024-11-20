@@ -23,6 +23,7 @@ def make_frame(
     img_data: typing.List[typing.Tuple[typing.Tuple[int, int], typing.Tuple[int, int, int]]],
     f: typing.Callable[[float, float], typing.Tuple[float, float, float]],
     lighten: bool = False,
+    lighten_adjust: int = 66,
 ) -> typing.List[typing.Tuple[typing.Tuple[float, ...], typing.Tuple[int, int, int, int]]]:
     polygons = []
     for ((i, j), c) in img_data:
@@ -35,9 +36,9 @@ def make_frame(
             )
         if lighten:
             color = (
-                max(0, min(255, c[0] + min(120, max(0, int(y) // 3 + 66)))),
-                max(0, min(255, c[1] + min(120, max(0, int(y) // 3 + 66)))),
-                max(0, min(255, c[2] + min(120, max(0, int(y) // 3 + 66)))),
+                max(0, min(255, c[0] + min(120, max(0, int(y) // 3 + lighten_adjust)))),
+                max(0, min(255, c[1] + min(120, max(0, int(y) // 3 + lighten_adjust)))),
+                max(0, min(255, c[2] + min(120, max(0, int(y) // 3 + lighten_adjust)))),
                 255,
             )
         else:
