@@ -1,7 +1,7 @@
 import math
 import typing
 from PIL import Image
-from bending.images import make_frame
+from bending.images import make_frame, sample_image
 from bending.file_io import save_frames
 
 
